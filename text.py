@@ -37,6 +37,17 @@ class Text:
                 text = 'tip_open_word'
             elif text_type == TextType.StartFileLabel:
                 text = 'tip_open_pdf'
+        elif action == Action.Pdf2Excel:
+            if text_type == TextType.OutputPathComboBox:
+                text = 'title_pdf_path'
+            elif text_type == TextType.OpenFileDialog:
+                text = 'title_open_pdf'
+            elif text_type == TextType.AddFileLabel:
+                text = 'tip_add_pdf'
+            elif text_type == TextType.OpenFileLabel:
+                text = 'tip_open_pdf'
+            elif text_type == TextType.StartFileLabel:
+                text = 'tip_open_excel'
         elif action == Action.Excel2Pdf:
             if text_type == TextType.OutputPathComboBox:
                 text = 'title_excel_path'

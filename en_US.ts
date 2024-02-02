@@ -7,7 +7,7 @@
         <source>title_this_app</source>
         <translation>PySidePDF</translation>
     </message>
-	
+
 	<message>
         <source>title_output_folder</source>
         <translation>Output path: </translation>
@@ -49,6 +49,10 @@
 	<message>
         <source>menu_word2pdf</source>
         <translation>Word to PDF</translation>
+    </message>
+    <message>
+        <source>menu_pdf2excel</source>
+        <translation>PDF to Excel</translation>
     </message>
 	<message>
         <source>menu_excel2pdf</source>

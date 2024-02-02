@@ -70,6 +70,10 @@ class MenuIcon:
         return qta.icon('ri.file-word-2-fill', color='#3949ab')
 
     @staticmethod
+    def get_pdf2excel():
+        return qta.icon('ri.file-excel-fill', color='#3949ab')
+
+    @staticmethod
     def get_excel2pdf():
         return qta.icon('ri.file-excel-2-fill', color='#3949ab')
 

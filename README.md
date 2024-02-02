@@ -18,8 +18,8 @@
    pip install pdf2docx
    pip install pdfplumber
    pip install pypiwin32
+   pip install pandas
    ```
-
 2. 运行main.py脚本：
 
    ```python

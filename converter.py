@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import pdf2docx
+import pdfplumber
+import pandas as pd
 from action import Action
 from office import Office
 
@@ -34,7 +36,20 @@ class Converter:
 
     @staticmethod
     def do_pdf2excel(src_file, dst_file):
-        pass
+        print(src_file)
+        # 读取pdf文件
+        pdf = pdfplumber.open(src_file)
+        if not pdf:
+            print ("NULL")
+            return 
+        # 访问第一页
+        first_page = pdf.pages[0]
+        # 读取表格数据
+        table = first_page.extract_table()
+        table_data = pd.DataFrame(table[1:], columns = table[0])
+        # 保存为excel
+        table_data.to_excel(dst_file, index = False)
+        pdf.close()
 
     @staticmethod
     def do_pdf2ppt(src_file, dst_file):

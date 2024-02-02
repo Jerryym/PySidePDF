@@ -189,28 +189,39 @@ class MainWindow(QMainWindow):
         bkg_color = self.theme.get_primary_color()
         style = ButtonStyle.get_tab(bkg_color, self.theme)
 
+        # menu_pdf2word
         btn = ButtonUtils.get_tab(MenuIcon.get_pdf2word(), MainWindow.tr('menu_pdf2word'), style, True)
         self.tab_btn = btn
         self.wid_mng.add(btn, text = 'menu_pdf2word', widget_type = WidgetType.DynamicWidget)
         self.wid_mng.add(btn, text = 'menu_pdf2word', widget_type = WidgetType.StyleWidget)
         btn.clicked.connect(self.on_click_tab_menu)
         layout.addWidget(btn, 1)
-        
+
         bkg_color = self.get_unclicked_tab_menu_color()
         style = ButtonStyle.get_tab(bkg_color, self.theme)
 
+        # menu_word2pdf
         btn = ButtonUtils.get_tab(MenuIcon.get_word2pdf(), MainWindow.tr('menu_word2pdf'), style, False)
         self.wid_mng.add(btn, text='menu_word2pdf', widget_type=WidgetType.DynamicWidget)
         self.wid_mng.add(btn, text='menu_word2pdf', widget_type=WidgetType.StyleWidget)
         btn.clicked.connect(self.on_click_tab_menu)
         layout.addWidget(btn, 1)
 
+        # menu_pdf2excel
+        btn = ButtonUtils.get_tab(MenuIcon.get_pdf2excel(), MainWindow.tr('PDF To Excel'), style, False)
+        self.wid_mng.add(btn, text='PDF To Excel', widget_type=WidgetType.DynamicWidget)
+        self.wid_mng.add(btn, text='PDF To Excel', widget_type=WidgetType.StyleWidget)
+        btn.clicked.connect(self.on_click_tab_menu)
+        layout.addWidget(btn, 1)
+
+        # menu_excel2pdf
         btn = ButtonUtils.get_tab(MenuIcon.get_excel2pdf(), MainWindow.tr('menu_excel2pdf'), style, False)
         self.wid_mng.add(btn, text='menu_excel2pdf', widget_type=WidgetType.DynamicWidget)
         self.wid_mng.add(btn, text='menu_excel2pdf', widget_type=WidgetType.StyleWidget)
         btn.clicked.connect(self.on_click_tab_menu)
         layout.addWidget(btn, 1)
 
+        # menu_ppt2pdf
         btn = ButtonUtils.get_tab(MenuIcon.get_ppt2pdf(), MainWindow.tr('menu_ppt2pdf'), style, False)
         self.wid_mng.add(btn, text='menu_ppt2pdf', widget_type=WidgetType.DynamicWidget)
         self.wid_mng.add(btn, text='menu_ppt2pdf', widget_type=WidgetType.StyleWidget)
@@ -505,6 +516,11 @@ class MainWindow(QMainWindow):
                 return LabelIcon.get_word(size)
             else:
                 return LabelIcon.get_pdf(size)
+        elif self.action == Action.Pdf2Excel:
+            if not update:
+                return LabelIcon.get_pdf(size)
+            else:
+                return LabelIcon.get_excel(size)
         elif self.action == Action.Excel2Pdf:
             if not update:
                 return LabelIcon.get_excel(size)
@@ -683,7 +699,7 @@ class MainWindow(QMainWindow):
 
         style_widgets = self.wid_mng.get_all(WidgetType.StyleWidget)
         for (name, widget) in style_widgets.items():
-            if name in ['menu_pdf2word', 'menu_word2pdf', 'menu_excel2pdf', 'menu_ppt2pdf', 'menu_pdf_split', 'menu_pdf_merge']:
+            if name in ['menu_pdf2word', 'menu_word2pdf', 'PDF To Excel', 'menu_excel2pdf', 'menu_ppt2pdf', 'menu_pdf_split', 'menu_pdf_merge']:
                 bkg_color = self.get_unclicked_tab_menu_color()
                 style = ButtonStyle.get_tab(bkg_color, self.theme)
             elif name == 'lbl_open':
@@ -752,6 +768,8 @@ class MainWindow(QMainWindow):
             action = Action.Pdf2Word
         elif text == MainWindow.tr('menu_word2pdf'):
             action = Action.Word2Pdf
+        elif text == MainWindow.tr('PDF To Excel'):
+            action = Action.Pdf2Excel
         elif text == MainWindow.tr('menu_excel2pdf'):
             action = Action.Excel2Pdf
         elif text == MainWindow.tr('menu_ppt2pdf'):

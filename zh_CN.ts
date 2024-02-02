@@ -50,6 +50,10 @@
         <source>menu_word2pdf</source>
         <translation>Word转PDF</translation>
     </message>
+    <message>
+        <source>menu_pdf2excel</source>
+        <translation>PDF转Excel</translation>
+    </message>
 	<message>
         <source>menu_excel2pdf</source>
         <translation>Excel转PDF</translation>
